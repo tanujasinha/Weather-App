@@ -18,11 +18,12 @@ let tempUnits = "Celcius";
 let unitsMode = "metric";
 let tempUnitSymbol = "\u00B0C";
 let windUnitSymbol = "m/s";
+let liveId;
 
 //Live weather button functionality
 liveWeatherBtn.addEventListener("click",event=>{
     if(liveWeatherBtn.textContent==="Start live weather"){
-        let liveId=setInterval(() => {
+        liveId=setInterval(() => {
             setGeoCoords();
             getCurrentWeather();
         },1000);
