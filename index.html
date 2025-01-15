@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Weather App</h1>
+        <div id="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div id="main-dropdown" class="dropdown">
+            <div id="change-unit-option" class="options">Change Unit</div>
+            <div class="options">dad</div>
+        </div>
+        <div id="unit-dropdown" class="dropdown">
+            <div class="unit-options options">Celcius</div>
+            <div class="unit-options options">Fahrenheit</div>
+            <div class="unit-options options">Kelvin</div>
+        </div>
+        <p id="message"></p>
+    </header>
+
+    <main>
+        <div id="home-elements">
+            <div id="card">
+                <!-- Input field with location icon inside -->
+                <div id="input-container">
+                    <input type="text" id="city-input-box" placeholder="Type a city name...">
+                    <img src="images/location_icon.png" alt="location" id="location-icon">
+                </div>
+                <ul id="suggestions-list"></ul>
+                </ul>
+            </div>
+            <div id="buttons">
+                <button onclick="getCurrentWeather()">Weather</button>
+                <button>Forecast</button>
+            </div>
+        </div>
+        <div id="weather-info">
+            <h4 id="city-box"></h4>
+            <div id="basic-info">
+                <div class="temp-container">
+                    <div id="temp"></div>
+                    <img src="" alt="weather icon" id="weather-icon">
+                </div>
+                <div class="desc-container">
+                    <span id="main-desc"></span>
+                    <span id="feels-like"></span>
+                </div>
+            </div>
+            <div id="detailed-info">
+                <div class="box-elements" id="humidity-box">
+                    <div class="label">
+                        <img src="images/humidity_icon.png" alt="humidity icon">
+                        <span>Humidity</span>
+                    </div>
+                    <div id="humidity-value-box" class="values"></div>
+                </div>
+
+                <div class="box-elements" id="pressure-box">
+                    <div class="label">
+                        <img src="images/pressure_icon.png" alt="pressure icon">
+                        <span>Pressure</span>
+                    </div>
+                    <div id="pressure-value-box" class="values">
+                    </div>
+                </div>
+
+                <div class="box-elements" id="visibility-box">
+                    <div class="label">
+                        <img src="images/visibility_icon.png" alt="visibility icon">
+                        <span>Visibility</span>
+                    </div>
+                    <div id="visibility-value-box" class="values"></div>
+                </div>
+
+                <div class="box-elements" id="wind-box">
+                    <div class="label">
+                        <img src="images/wind_icon.png" alt="wind icon">
+                        <span>Wind</span>
+                    </div>
+                    <div id="wind-value-box" class="values"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Tanuja Sinha, All rights reserved</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
