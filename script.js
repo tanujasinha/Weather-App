@@ -19,6 +19,7 @@ let unitsMode = "metric";
 let tempUnitSymbol = "\u00B0C";
 let windUnitSymbol = "m/s";
 let liveId;
+let para;
 
 //Live weather button functionality
 liveWeatherBtn.addEventListener("click",event=>{
@@ -173,21 +174,9 @@ function errorCallback(error) {
     messageDisplay.classList = "error";
     messageFadeOut();
 }
-function getCurrentWeather() {
-
+function recordInputLocationData(){
     let city = cityInputBox.value;
     if (city) {
-        fetchCurrentWeather(city);
-    }
-    else {
-        messageDisplay.textContent = "Field empty! Enter a city";
-        messageDisplay.classList = "error";
-        messageFadeOut();
-    }
-}
-async function fetchCurrentWeather(city) {
-    try {
-        let para;
         if (isNaN(city.charAt(0))) {
             const parts = city.split(',').map(part => part.trim());
             const cityName = parts[0];
@@ -199,7 +188,21 @@ async function fetchCurrentWeather(city) {
             let [latitude, longitude] = city.split(',').map(coord => parseFloat(coord.trim()));
             para = `lat=${latitude}&lon=${longitude}`;
         }
+    
+    }
+    else {
+        messageDisplay.textContent = "Field empty! Enter a city";
+        messageDisplay.classList = "error";
+        messageFadeOut();
+    }
+   
+    
+}
 
+async function getCurrentWeather() {
+    recordInputLocationData();
+    try {
+       
         let fetchedWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?${para}&appid=${APIkey}&units=${unitsMode}`);
         if (!fetchedWeather.ok) {
             throw new Error(`Error fetching weather data`);
