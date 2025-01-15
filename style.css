@@ -35,7 +35,36 @@ h1 {
     margin: 0;
     font-size: 3em;
 }
+#live-weather{
+    position: absolute;
+    top:22px;
+    right:13%;
+    padding: 10px;
+    font-size: 1.3em;
+    border-radius: 10px;
+    border:none;
+    color: white;
+    cursor: pointer;
+}
 
+.start{
+    background-color: hsl(120, 100%, 25%);
+}
+.start:hover{
+    background-color:hsl(120, 100%, 35%) ;
+}
+.start:active{
+    background-color:hsl(120, 100%, 25%) ;
+}
+.stop{
+    background-color: hsl(0, 100%, 50%);
+}
+.stop:hover{
+    background-color: hsl(0, 100%, 70%);
+}
+.stop:active{
+    background-color: hsl(0, 100%, 50%);
+}
 #menu {
     top: 15px;
     padding: 10px;
@@ -201,7 +230,7 @@ h1 {
 }
 
 #buttons button:active {
-    background-color: hsl(300, 87%, 71%);
+    background-color: hsl(300, 87%, 51%);
 }
 
 #weather-info {

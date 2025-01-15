@@ -10,6 +10,7 @@ const cityInputBox = document.getElementById("city-input-box");
 const suggestionList = document.getElementById("suggestions-list");
 const locationIcon = document.getElementById("location-icon");
 const weatherInfo = document.getElementById("weather-info")
+const liveWeatherBtn=document.getElementById("live-weather");
 
 
 const APIkey = "c8d47b3c69227c3bba7dd17a791dc037";
@@ -17,6 +18,24 @@ let tempUnits = "Celcius";
 let unitsMode = "metric";
 let tempUnitSymbol = "\u00B0C";
 let windUnitSymbol = "m/s";
+
+//Live weather button functionality
+liveWeatherBtn.addEventListener("click",event=>{
+    if(liveWeatherBtn.textContent==="Start live weather"){
+        let liveId=setInterval(() => {
+            setGeoCoords();
+            getCurrentWeather();
+        },1000);
+        liveWeatherBtn.textContent="Stop live weather";
+        liveWeatherBtn.classList="stop";
+      
+    }
+    else{
+        clearInterval(liveId);
+        liveWeatherBtn.textContent="Start live weather";
+        liveWeatherBtn.classList="start";    
+    }
+})
 
 //Updates units according to user selection
 function updateUnit() {
@@ -114,6 +133,11 @@ cityInputBox.addEventListener("input", async () => {
 })
 //Get user's location by clicking on location icon
 locationIcon.addEventListener("click", event => {
+   setGeoCoords();
+})
+
+
+function setGeoCoords(){
     if (!navigator.geolocation) {
         messageDisplay.textContent = "Geolocation is not supported by this browser. Please type manually";
         messageDisplay.classList = "error";
@@ -122,8 +146,7 @@ locationIcon.addEventListener("click", event => {
     else {
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
-})
-
+}
 function successCallback(result) {
     let { latitude, longitude } = result.coords;
     cityInputBox.value = `${latitude},${longitude}`;
