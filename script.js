@@ -93,7 +93,7 @@ unitOptions.forEach(unitElement => {
 
 //Suggestions on typing
 cityInputBox.addEventListener("input", async () => {
-    weatherInfo.style.visibility = "hidden";
+    weatherInfo.style.display="none";
     try {
         let enteredAddress = cityInputBox.value;
         if (enteredAddress.length === 0) {
@@ -223,16 +223,16 @@ function displayWeather(weather) {
     let { temp, feels_like, humidity, pressure } = weather.main;
     let { speed: wind } = weather.wind;
     let { main, icon } = weather.weather[0];
-    document.getElementById("city-box").textContent = name;
-    document.getElementById("temp").textContent = `${temp.toFixed(1)} ${tempUnitSymbol}`;
-    document.getElementById("feels-like").textContent = `Feels like ${feels_like.toFixed(1)} ${tempUnitSymbol}`;
-    document.getElementById("main-desc").textContent = main;
-    document.getElementById("humidity-value-box").textContent = `${humidity} % `;
-    document.getElementById("pressure-value-box").textContent = `${pressure} hPa`;
-    document.getElementById("visibility-value-box").textContent = `${visibility} m`;
-    document.getElementById("wind-value-box").textContent = `${wind.toFixed(1)} ${windUnitSymbol}`;
+    document.getElementById("weather-city-box").textContent = name;
+    document.getElementById("weather-temp").textContent = `${temp.toFixed(1)} ${tempUnitSymbol}`;
+    document.getElementById("weather-feels-like").textContent = `Feels like ${feels_like.toFixed(1)} ${tempUnitSymbol}`;
+    document.getElementById("weather-main-desc").textContent = main;
+    document.getElementById("weather-humidity-value-box").textContent = `${humidity} % `;
+    document.getElementById("weather-pressure-value-box").textContent = `${pressure} hPa`;
+    document.getElementById("weather-visibility-value-box").textContent = `${visibility} m`;
+    document.getElementById("weather-wind-value-box").textContent = `${wind.toFixed(1)} ${windUnitSymbol}`;
     document.getElementById("weather-icon").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    weatherInfo.style.visibility = "visible";
+    weatherInfo.style.display="flex";
 }
 function messageFadeOut() {
     setTimeout(() => { messageDisplay.textContent = "" }, 3000);
