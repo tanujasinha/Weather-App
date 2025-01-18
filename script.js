@@ -25,6 +25,7 @@ let para;
 // At the top with other variables
 let liveWeatherInterval = null;  // To track the interval
 
+
 // Updated live weather button functionality
 liveWeatherBtn.addEventListener("click", event => {
     if (liveWeatherBtn.textContent === "Start live weather") {
@@ -63,7 +64,11 @@ liveWeatherBtn.addEventListener("click", event => {
         liveWeatherBtn.textContent = "Start live weather";
         liveWeatherBtn.classList = "start"; 
     }
+    if(cityInputBox.value===""){
+        weatherInfo.style.display="none";
+    }
 });
+
 // Add real-time clock functionality
 function updateClock() {
     const now = new Date();
