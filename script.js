@@ -1,3 +1,4 @@
+
 //References to elements
 const header = document.getElementsByTagName("header");
 const messageDisplay = document.getElementById("message");
@@ -77,11 +78,14 @@ function updateUnit() {
 
 //dropdown toogle
 menu.addEventListener("click", event => {
-    if (mainDropdown.style.display === "none") {
-        mainDropdown.style.display = "block";
+    if(mainDropdown.style.display==="block"){
+        mainDropdown.style.display="none";
     }
-    else {
-        mainDropdown.style.display = "none";
+    else if(unitDropdown.style.display==="block"){
+        unitDropdown.style.display="none";
+    }
+    else{
+        mainDropdown.style.display="block";
     }
 })
 //change unit dropdown toogle
