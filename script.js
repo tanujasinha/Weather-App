@@ -28,6 +28,12 @@ let liveWeatherInterval = null;  // To track the interval
 // Updated live weather button functionality
 liveWeatherBtn.addEventListener("click", event => {
     if (liveWeatherBtn.textContent === "Start live weather") {
+       
+       
+        // Show clock during live weather sessions
+        document.getElementById("real-time-clock").style.display = "block";
+        updateClock();
+        setInterval(updateClock, 1000);
         // Clear any existing interval first
         if (liveWeatherInterval) {
             clearInterval(liveWeatherInterval);
@@ -36,7 +42,7 @@ liveWeatherBtn.addEventListener("click", event => {
         // Initial immediate update
         setGeoCoords();
         getCurrentWeather();
-
+        clearErrorMessage();
         // Set new interval - using 5 minutes instead of 1 second
         liveWeatherInterval = setInterval(() => {
             setGeoCoords();
@@ -50,10 +56,25 @@ liveWeatherBtn.addEventListener("click", event => {
             clearInterval(liveWeatherInterval);
             liveWeatherInterval = null;
         }
+        weatherInfo.style.display="none";
+        cityInputBox.value="";
+        clearErrorMessage();
+        document.getElementById("real-time-clock").style.display = "none";
         liveWeatherBtn.textContent = "Start live weather";
-        liveWeatherBtn.classList = "start";
+        liveWeatherBtn.classList = "start"; 
     }
 });
+// Add real-time clock functionality
+function updateClock() {
+    const now = new Date();
+    const formattedTime = now.toLocaleTimeString();
+    document.getElementById("real-time-clock").textContent = formattedTime;
+}
+// Ensure no error message appears when starting live weather
+function clearErrorMessage() {
+    messageDisplay.textContent = "";
+    messageDisplay.className = ""; // Clear styles
+}
 
 //Updates units according to user selection
 function updateUnit() {
