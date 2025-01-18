@@ -15,6 +15,7 @@ header {
     display: flex;
     height: 26vh;
 }
+
 h1 {
     top: 15px;
     position: absolute;
@@ -105,7 +106,7 @@ h1 {
 
 #unit-dropdown {
     top: 70px;
-    right: 163px;
+    right: 22px;
 }
 
 .options {
@@ -252,11 +253,12 @@ main {
     backdrop-filter: blur(8px);
 }
 
-#weather-info,#forecast-info {
+#weather-info,
+#forecast-info {
     display: none;
 }
 
-.city-box{
+.city-box {
     color: rgb(79, 209, 23);
     text-align: center;
     grid-column: 1 / -1;
@@ -264,9 +266,10 @@ main {
     margin: 0px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.date-box{
+
+.date-box {
     font-weight: normal;
-    font-size:1.5em;
+    font-size: 1.5em;
     margin: 0px;
     color: red;
 }
@@ -415,39 +418,47 @@ main {
     }
 
 }
+
 /* Updated styles for forecast boxes */
 .forecast-box {
-    flex: 1 1 calc(50% - 2em); /* Change to 50% for 2 boxes per row */
+    flex: 1 1 calc(50% - 2em);
+    /* Change to 50% for 2 boxes per row */
     margin: 1em;
     padding: 1em;
     background-color: hsla(271, 76%, 43%, 0.3);
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    min-width: 300px; /* Add minimum width to prevent boxes from getting too small */
-    max-width: 500px; /* Add maximum width to maintain readability */
+    min-width: 300px;
+    /* Add minimum width to prevent boxes from getting too small */
+    max-width: 500px;
+    /* Add maximum width to maintain readability */
 }
 
 #forecast-boxes {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    justify-content: center; /* Changed to center for better alignment */
+    justify-content: center;
+    /* Changed to center for better alignment */
     width: 100%;
     margin: 0 auto;
-    padding: 0 1em; /* Add padding for better spacing on edges */
+    padding: 0 1em;
+    /* Add padding for better spacing on edges */
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .forecast-box {
-        flex: 1 1 100%; /* Full width on smaller screens */
+        flex: 1 1 100%;
+        /* Full width on smaller screens */
         margin: 0.5em;
     }
-    
+
     #forecast-boxes {
         padding: 0 0.5em;
     }
 }
+
 .success {
     color: hsl(123, 94%, 49%);
     font-weight: bold;

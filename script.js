@@ -10,7 +10,7 @@ const cityInputBox = document.getElementById("city-input-box");
 const suggestionList = document.getElementById("suggestions-list");
 const locationIcon = document.getElementById("location-icon");
 const weatherInfo = document.getElementById("weather-info")
-const liveWeatherBtn=document.getElementById("live-weather");
+const liveWeatherBtn = document.getElementById("live-weather");
 
 
 const APIkey = "c8d47b3c69227c3bba7dd17a791dc037";
@@ -31,17 +31,17 @@ liveWeatherBtn.addEventListener("click", event => {
         if (liveWeatherInterval) {
             clearInterval(liveWeatherInterval);
         }
-        
+
         // Initial immediate update
         setGeoCoords();
         getCurrentWeather();
-        
+
         // Set new interval - using 5 minutes instead of 1 second
         liveWeatherInterval = setInterval(() => {
             setGeoCoords();
             getCurrentWeather();
         }, 1000); // 300000ms = 5 minutes
-        
+
         liveWeatherBtn.textContent = "Stop live weather";
         liveWeatherBtn.classList = "stop";
     } else {
@@ -50,7 +50,7 @@ liveWeatherBtn.addEventListener("click", event => {
             liveWeatherInterval = null;
         }
         liveWeatherBtn.textContent = "Start live weather";
-        liveWeatherBtn.classList = "start";    
+        liveWeatherBtn.classList = "start";
     }
 });
 
@@ -86,17 +86,13 @@ menu.addEventListener("click", event => {
 })
 //change unit dropdown toogle
 changeUnitOption.addEventListener("click", event => {
-    if (unitDropdown.style.display === "none") {
-        unitDropdown.style.display = "block";
+    mainDropdown.style.display="none";
+    unitDropdown.style.display="block";
     }
-    else {
-        unitDropdown.style.display = "none";
-    }
-})
+)
 //unit dropdown disappear after clicking a unit
 unitOptions.forEach(unitElement => {
     unitElement.addEventListener("click", event => {
-        mainDropdown.style.display = "none";
         unitDropdown.style.display = "none";
         tempUnits = event.target.textContent;
         messageDisplay.textContent = `Unit has been successfully changed to ${tempUnits}`;
@@ -108,7 +104,7 @@ unitOptions.forEach(unitElement => {
 
 //Suggestions on typing
 cityInputBox.addEventListener("input", async () => {
-    weatherInfo.style.display="none";
+    weatherInfo.style.display = "none";
     try {
         let enteredAddress = cityInputBox.value;
         if (enteredAddress.length === 0) {
@@ -150,11 +146,11 @@ cityInputBox.addEventListener("input", async () => {
 })
 //Get user's location by clicking on location icon
 locationIcon.addEventListener("click", event => {
-   setGeoCoords();
+    setGeoCoords();
 })
 
 
-function setGeoCoords(){
+function setGeoCoords() {
     if (!navigator.geolocation) {
         messageDisplay.textContent = "Geolocation is not supported by this browser. Please type manually";
         messageDisplay.classList = "error";
@@ -189,7 +185,7 @@ function errorCallback(error) {
     messageDisplay.classList = "error";
     messageFadeOut();
 }
-function recordInputLocationData(){
+function recordInputLocationData() {
     let city = cityInputBox.value;
     if (city) {
         if (isNaN(city.charAt(0))) {
@@ -203,21 +199,21 @@ function recordInputLocationData(){
             let [latitude, longitude] = city.split(',').map(coord => parseFloat(coord.trim()));
             para = `lat=${latitude}&lon=${longitude}`;
         }
-    
+
     }
     else {
         messageDisplay.textContent = "Field empty! Enter a city";
         messageDisplay.classList = "error";
         messageFadeOut();
     }
-   
-    
+
+
 }
 
 async function getCurrentWeather() {
     recordInputLocationData();
     try {
-       
+
         let fetchedWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?${para}&appid=${APIkey}&units=${unitsMode}`);
         if (!fetchedWeather.ok) {
             throw new Error(`Error fetching weather data`);
@@ -247,7 +243,7 @@ function displayWeather(weather) {
     document.getElementById("weather-visibility-value-box").textContent = `${visibility} m`;
     document.getElementById("weather-wind-value-box").textContent = `${wind.toFixed(1)} ${windUnitSymbol}`;
     document.getElementById("weather-icon").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    weatherInfo.style.display="flex";
+    weatherInfo.style.display = "flex";
 }
 function messageFadeOut() {
     setTimeout(() => { messageDisplay.textContent = "" }, 3000);
@@ -278,33 +274,33 @@ async function getWeatherForecast() {
 function displayForecast(forecast) {
     // Hide weather info if showing
     weatherInfo.style.display = "none";
-    
+
     // Show forecast container
     forecastInfo.style.display = "block";
-    
+
     // Set city name
     document.querySelector("#forecast-info .city-box").textContent = forecast.city.name;
-    
+
     // Get forecast boxes
     const forecastBoxElements = document.querySelectorAll(".forecast-box");
-    
+
     // Process forecasts for next 4 time periods (each 3 hours apart)
     for (let i = 0; i < 4; i++) {
         const forecastData = forecast.list[i];
         const forecastBox = forecastBoxElements[i];
-        
+
         if (forecastData && forecastBox) {
             // Format date
             const date = new Date(forecastData.dt * 1000);
             const formattedDate = formatDate(date);
-            
+
             // Update forecast box content
             forecastBox.querySelector(".date-box").textContent = formattedDate;
             forecastBox.querySelector(".forecast-temp").textContent = `${forecastData.main.temp.toFixed(1)} ${tempUnitSymbol}`;
             forecastBox.querySelector(".forecast-icon").src = `https://openweathermap.org/img/wn/${forecastData.weather[0].icon}@2x.png`;
             forecastBox.querySelector(".forecast-main-desc").textContent = forecastData.weather[0].main;
             forecastBox.querySelector(".forecast-feels-like").textContent = `Feels like ${forecastData.main.feels_like.toFixed(1)} ${tempUnitSymbol}`;
-            
+
             // Update detailed info
             forecastBox.querySelector(".forecast-humidity-value-box").textContent = `${forecastData.main.humidity} %`;
             forecastBox.querySelector(".forecast-pressure-value-box").textContent = `${forecastData.main.pressure} hPa`;
@@ -316,9 +312,9 @@ function displayForecast(forecast) {
 
 // Helper function to format date
 function formatDate(date) {
-    const options = { 
-        weekday: 'short', 
-        month: 'short', 
+    const options = {
+        weekday: 'short',
+        month: 'short',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
