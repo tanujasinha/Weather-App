@@ -45,7 +45,7 @@ A modern, responsive weather application that provides real-time weather informa
 
 4. **Enable Live Updates**:
    - Click "Start live weather" to enable automatic updates
-   - Updates occur every 5 minutes
+   - Updates occur every second
    - Click "Stop live weather" to disable
 
 ## Author
@@ -56,3 +56,6 @@ Tanuja Sinha
 
 - Weather data provided by [OpenWeather](https://openweathermap.org/)
 - Icons from [OpenWeather Icons](https://openweathermap.org/weather-conditions)
+
+## Live link
+https://tanujasinha.github.io/Weather-App/

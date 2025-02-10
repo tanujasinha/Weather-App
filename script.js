@@ -145,7 +145,7 @@ cityInputBox.addEventListener("input", async () => {
         suggestionList.style.display = "block";
         cityInputBox.style.borderRadius = "10px 10px 0px 0px";
 
-        let fetchedCities = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${enteredAddress}&limit=5&appid=${APIkey}&units=${unitsMode}`);
+        let fetchedCities = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${enteredAddress}&limit=5&appid=${APIkey}&units=${unitsMode}`);
         if (fetchedCities.ok) {
             fetchedCities = await fetchedCities.json();
             suggestionList.innerHTML = "";

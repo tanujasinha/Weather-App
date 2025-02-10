@@ -254,7 +254,7 @@ main {
     max-width: 500px;
     margin: 1em auto;
     padding: 0.5em;
-    background-color: hsla(271, 76%, 43%, 0.2);
+    background-color: hwb(271 2% 43% / 0.2);
     border-radius: 20px;
     backdrop-filter: blur(8px);
 }
