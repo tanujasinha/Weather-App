@@ -56,6 +56,9 @@ Tanuja Sinha
 
 - Weather data provided by [OpenWeather](https://openweathermap.org/)
 - Icons from [OpenWeather Icons](https://openweathermap.org/weather-conditions)
+<<<<<<< HEAD
 
 ## Live link
 https://tanujasinha.github.io/Weather-App/
+=======
+>>>>>>> 4f0f36322536b8d8d8ec85b14a3229b3b89ab09e
